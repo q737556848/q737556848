@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm install pnpm'
+                sh 'npm install pnpm -g'
                 sh 'pnpm install'
                 sh 'rm -rf ./dist'
                 sh 'pnpm build:app'
