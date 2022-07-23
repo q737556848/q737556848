@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "skipLibCheck": true,
+    "allowJs": false,
+    "noImplicitAny": true,
+    "composite": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": false,
+    "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true, // any object允许点取属性。。
+    "noImplicitThis": true,
+    "noEmitOnError": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@models/*": ["models/*"],
+      "@app/*": ["app/*"],
+      "@server/*": ["server/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
+  "exclude": [
+    "app/node_modules/**/*",
+    "server/node_modules/**/*",
+    "app/dist/**/*",
+    "server/dist/**/*",
+    "./node_modules/**/*"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "vue-eslint-parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    "@vue/prettier",
+    "@vue/prettier/@typescript-eslint",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "parser": "@typescript-eslint/parser",
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true,
+      "globalReturn": false
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error", // 表示被prettier标记的地方抛出错误信息。
+    "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-var-requires": 0,
+    "no-mixed-requires": 0,
+    "prefer-const": "off",
+    "vue/no-multiple-template-root": 0,
+    "vue/comment-directive": "off",
+    "vue/no-v-html": "off",
+    "@typescript-eslint/no-unused-vars": 1,
+    "vue/require-explicit-emits": ["off"],
+    "no-debugger": "warn"
+  }
+}

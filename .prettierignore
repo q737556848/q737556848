@@ -1,0 +1,6 @@
+# 只能在根目录下统一忽略
+/node_modules
+/app/node_modules
+/server/node_modules
+/app/dist
+/server/dist

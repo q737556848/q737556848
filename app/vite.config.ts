@@ -1,7 +1,15 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import { defineConfig } from "vite";
+import { getModelsPath, getServerPath, getAppPath } from "../utils/path";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()]
-})
+  plugins: [vueJsx(), vue()],
+  resolve: {
+    alias: [
+      { find: "@models", replacement: getModelsPath("./") },
+      { find: "@app", replacement: getAppPath("./") },
+      { find: "@server", replacement: getServerPath("./") }
+    ]
+  }
+});

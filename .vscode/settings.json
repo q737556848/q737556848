@@ -1,0 +1,54 @@
+{
+  // 自动保存的配置
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    // "source.fixAll": true, // 全部保存
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+
+  // 常用文件类型的配置
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.json": "jsonc" // 允许JSON文件带有注释JSON with Comments
+  },
+
+  // vue文件类型的配置
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // 先用prettier捋一遍
+    // 再用eslint捋一遍
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+    // stylelint会捋一遍，十分牛逼
+  },
+
+  // js,ts,tsx,jsx文件类型的配置
+  "eslint.format.enable": true,
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact", "vue"],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascriptreact": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescriptreact": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // css、scss、less文件类型的配置
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "less", "scss", "postcss", "vue"],
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  }
+}
