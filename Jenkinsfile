@@ -20,8 +20,6 @@ pipeline {
         stage('Deploy') {
             agent any
             steps {
-                // 清空防止缓存
-                sh 'rm -rf /home/www_home/html/'
                 // 需要映射jenkins容器的数据卷路径 /home/www_home/html
                 sh 'mkdir -p /home/www_home/html/ && cp -r ./app/dist/ /home/www_home/html/'
             }
