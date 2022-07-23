@@ -9,9 +9,11 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm install pnpm -g'
+                sh 'npm install pnpm -g' 
+                sh 'npm install vite -g'
+                sh 'npm install vue-tsc -g'
                 sh 'pnpm install'
-                sh 'rm -rf ./dist'
+                sh 'rm -rf ./dist' // 清空防止缓存
                 sh 'pnpm build:app'
             }
         }
