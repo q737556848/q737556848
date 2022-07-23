@@ -1,0 +1,14 @@
+{
+  "name": "laixiaotao",
+  "version": "0.0.1",
+  "description": "哇咔咔",
+  "main": "index.js",
+  "scripts": {
+    "dev:app": "pnpm --filter @laixiaotao/app dev",
+    "build:app": "pnpm --filter @laixiaotao/app build",
+    "dev:serve": "pnpm --filter @laixiaotao/server dev"
+  },
+  "keywords": [],
+  "author": "laixiaotao",
+  "license": "ISC"
+}

@@ -9,14 +9,19 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo "执行相关install"'
+                sh 'npm install pnpm'
+                sh 'pnpm install'
+                sh 'rm -rf ./dist'
+                sh 'pnpm build:app'
             }
         }
         stage('Deploy') {
             agent any
             steps {
+                // 清空防止缓存
+                sh 'rm -rf /home/www_home/html/'
                 // 需要映射jenkins容器的数据卷路径 /home/www_home/html
-                sh 'mkdir -p /home/www_home/html/ && cp -r ./ /home/www_home/html/'
+                sh 'mkdir -p /home/www_home/html/ && cp -r ./app/dist/ /home/www_home/html/'
             }
         }
     }
