@@ -15,7 +15,7 @@ pipeline {
         stage('Deploy') {
             agent any
             steps {
-                sh 'cp ./ /home/www_home/html'
+                sh 'cp -r ./ /home/www_home/html'
             }
         }
     }
