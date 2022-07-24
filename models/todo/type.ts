@@ -1,6 +1,6 @@
-import { todoType } from "./const";
+import { todoTypeList } from "./const";
 
-export type TodoType = typeof todoType;
+export type TodoType = typeof todoTypeList[number];
 
 export type TodoItem = {
   name: string;

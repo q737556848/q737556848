@@ -6,7 +6,7 @@
   "scripts": {
     "dev:app": "pnpm --filter @laixiaotao/app dev",
     "build:app": "pnpm --filter @laixiaotao/app build",
-    "dev:serve": "pnpm --filter @laixiaotao/server dev",
+    "dev:serve": "pnpm --filter @laixiaotao/server start",
     "build:serve": "pnpm --filter @laixiaotao/server build"
   },
   "keywords": [],

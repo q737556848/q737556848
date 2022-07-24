@@ -1,1 +1,1 @@
-export const todoType = ["life", "work", "study"] as const;
+export const todoTypeList = ["life", "work", "study"] as const;
