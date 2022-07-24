@@ -1,3 +1,4 @@
+import styles from "./app.module.scss";
 import { defineComponent } from "vue";
 
 const App = defineComponent({
@@ -5,7 +6,7 @@ const App = defineComponent({
 
   setup() {
     return () => (
-      <div class="app-container">
+      <div class={styles["app-container"]}>
         <router-view />
       </div>
     );
