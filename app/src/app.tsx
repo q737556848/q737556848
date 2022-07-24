@@ -1,9 +1,14 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 const App = defineComponent({
   name: "App",
-  render() {
-    return <div>App首页</div>;
+
+  setup() {
+    return () => (
+      <div class="app-container">
+        <router-view />
+      </div>
+    );
   }
 });
 
