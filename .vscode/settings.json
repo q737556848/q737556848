@@ -43,12 +43,15 @@
   "stylelint.enable": true,
   "stylelint.validate": ["css", "less", "scss", "postcss", "vue"],
   "[css]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    "editor.formatOnSave": false, // 禁用prettier自动保存时将他撸一遍，防止和stylelint冲突
+    "editor.defaultFormatter": "stylelint.vscode-stylelint" // 不知道为啥，不能杜绝prettier格式化css文件
   },
   "[scss]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    "editor.formatOnSave": false, // 禁用prettier自动保存时将他撸一遍，防止和stylelint冲突
+    "editor.defaultFormatter": "stylelint.vscode-stylelint" // 不知道为啥，不能杜绝prettier格式化scss文件
   },
   "[less]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    "editor.formatOnSave": false, // 禁用prettier自动保存时将他撸一遍，防止和stylelint冲突
+    "editor.defaultFormatter": "stylelint.vscode-stylelint" // 不知道为啥，不能杜绝prettier格式化less文件
   }
 }

@@ -1,19 +1,19 @@
 @mixin f($justify-content: center, $align-items: center) {
-    display: flex;
-    align-items: $align-items;
-    justify-content: $justify-content;
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
 }
 
 @mixin fcc($flex-direction: row, $flex-wrap: nowrap){
-    @include f(center, center);
+  @include f(center, center);
 
-    flex-direction: $flex-direction;
-    flex-wrap: $flex-wrap;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
 }
 
 @mixin fsc($flex-direction: row, $flex-wrap: nowrap) {
-    @include f(center, center);
+  @include f(center, center);
 
-    flex-direction: $flex-direction;
-    flex-wrap: $flex-wrap;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
 }
