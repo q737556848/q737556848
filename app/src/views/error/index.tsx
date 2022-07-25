@@ -1,4 +1,6 @@
+import styles from "./index.module.scss";
 import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
 
 const View = defineComponent({
   name: "Error",
@@ -11,7 +13,20 @@ const View = defineComponent({
   },
 
   setup(props) {
-    return () => <div class="error-container">{props.errorNum}</div>;
+    const router = useRouter();
+
+    const returnIndex = () => {
+      router.push("/");
+    };
+
+    return () => (
+      <div class={styles["error-container"]}>
+        <span class={styles["text"]}>{props.errorNum}</span>
+        <span class={styles["button"]}>
+          <el-button onClick={returnIndex}>返回首页</el-button>
+        </span>
+      </div>
+    );
   }
 });
 

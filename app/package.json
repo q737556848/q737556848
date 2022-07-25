@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/three": "^0.142.0",
+    "element-plus": "^2.2.10",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.16",
     "three": "^0.142.0",
@@ -20,6 +21,7 @@
     "@vitejs/plugin-vue": "^3.0.0",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "sass": "^1.54.0",
+    "sass-loader": "^8.0.2",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
     "vue-tsc": "^0.38.4"
