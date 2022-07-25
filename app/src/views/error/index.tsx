@@ -23,7 +23,9 @@ const View = defineComponent({
       <div class={styles["error-container"]}>
         <span class={styles["text"]}>{props.errorNum}</span>
         <span class={styles["button"]}>
-          <el-button onClick={returnIndex}>返回首页</el-button>
+          <el-button size="large" onClick={returnIndex}>
+            返回首页
+          </el-button>
         </span>
       </div>
     );

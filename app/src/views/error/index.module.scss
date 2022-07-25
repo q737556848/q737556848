@@ -2,9 +2,13 @@
   @include fcc(column);
 
   padding-top: 20%;
-  font-size: 200px;
 
   .text {
+    font-size: 200px;
     text-align:  center;
+  }
+
+  .button {
+    margin-top: 30px;
   }
 }

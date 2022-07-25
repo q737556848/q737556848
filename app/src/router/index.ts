@@ -1,6 +1,6 @@
 import Index from "@app/src/views/index";
 import Error from "@app/src/views/error";
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import { defineComponent, h } from "vue";
 
 const getErrorView = (errorNum: number) =>
@@ -20,7 +20,7 @@ const routes: RouteRecordRaw[] = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 });
 
