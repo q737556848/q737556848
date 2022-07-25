@@ -11,5 +11,12 @@ export default defineConfig({
       { find: "@app", replacement: getAppPath("./") },
       { find: "@server", replacement: getServerPath("./") }
     ]
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: "@import '@app/src/assets/styles/public.scss';"
+      }
+    }
   }
 });

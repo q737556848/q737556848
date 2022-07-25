@@ -1,5 +1,8 @@
 .error-container {
-  text-align:  center;
+  @include fcc(column);
+
+  padding-top: 20%;
+  font-size: 200px;
 
   .text {
     text-align:  center;

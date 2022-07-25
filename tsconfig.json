@@ -29,7 +29,8 @@
       "@server/*": ["server/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue", "postcss.config.js"],
+  "files": ["./app/node_modules/element-plus/global.d.ts"],
   "exclude": [
     "app/node_modules/**/*",
     "server/node_modules/**/*",

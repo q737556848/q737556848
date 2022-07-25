@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   stylelint: {},
   // 已经包含autoprefixer
   "postcss-preset-env": {

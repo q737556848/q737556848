@@ -12,8 +12,22 @@
 }
 
 @mixin fsc($flex-direction: row, $flex-wrap: nowrap) {
-  @include f(center, center);
+  @include f(flex-start, center);
 
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+}
+
+@mixin fcs($flex-direction: row, $flex-wrap: nowrap) {
+  @include f(center, flex-start);
+  
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+}
+
+@mixin fss($flex-direction: row, $flex-wrap: nowrap) {
+  @include f(flex-start, flex-start);
+    
   flex-direction: $flex-direction;
   flex-wrap: $flex-wrap;
 }
