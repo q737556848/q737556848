@@ -4,6 +4,7 @@ importers:
 
   .:
     specifiers:
+      '@types/lodash': ^4.14.182
       '@typescript-eslint/eslint-plugin': ^5.9.0
       '@typescript-eslint/parser': ^5.0.0
       '@vue/cli-plugin-eslint': ~4.5.0
@@ -12,6 +13,7 @@ importers:
       eslint: ^8.6.0
       eslint-plugin-prettier: ^3.3.1
       eslint-plugin-vue: ^7.0.0
+      lodash: ^4.17.21
       postcss: ^8.3.3
       prettier: ^2.2.1
       stylelint: ^13.13.1
@@ -21,7 +23,10 @@ importers:
       stylelint-order: ^5.0.0
       stylelint-scss: ^3.21.0
       stylelint-webpack-plugin: ^3.1.0
+    dependencies:
+      lodash: 4.17.21
     devDependencies:
+      '@types/lodash': 4.14.182
       '@typescript-eslint/eslint-plugin': 5.30.7_xconv27bia2733zao6ipggqv2i
       '@typescript-eslint/parser': 5.30.7_eslint@8.20.0
       '@vue/cli-plugin-eslint': 4.5.19_eslint@8.20.0
@@ -593,7 +598,6 @@ packages:
 
   /@types/lodash/4.14.182:
     resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
-    dev: false
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
