@@ -8,6 +8,8 @@ export const useStore = (props: ThreeProps, ctx: ThreeContext) => {
   const containerRef = ref<HTMLDivElement | null>(null);
   const [isLoading, setIsLoading] = useRef(false);
 
+  console.log(ctx);
+
   return {
     isLoading,
     setIsLoading,
