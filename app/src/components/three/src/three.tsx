@@ -4,8 +4,11 @@ import useModel from "./hooks/use-model";
 import { createProvider } from "./hooks/use-store";
 import { threeProps, threeEmits } from "./three.type";
 import { defineComponent, onMounted } from "vue";
+import Stats from "three/examples/jsm/libs/stats.module";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment";
 
 const Component = defineComponent({
   name: "Three",
@@ -16,39 +19,84 @@ const Component = defineComponent({
   setup(props, ctx) {
     const store = createProvider(props, ctx);
     const { isLoading, containerRef } = store;
-    const { modelUrl } = useModel(props, ctx, store);
+    const { modelUrl } = useModel("littleBee");
 
     const init = () => {
+      // @ts-ignore
+      let mixer;
+
+      const clock = new THREE.Clock();
+
+      // @ts-ignore
+      const stats = new Stats() as Stats;
+      containerRef.value?.appendChild(stats.dom);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      containerRef.value?.appendChild(renderer.domElement);
+
+      const pmremGenerator = new THREE.PMREMGenerator(renderer);
+
       const scene = new THREE.Scene();
-      const gltfLoader = new GLTFLoader();
+      scene.background = new THREE.Color(0xbfe3dd);
+      scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+
+      const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 100);
+      camera.position.set(5, 2, 8);
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.target.set(0, 0.5, 0);
+      controls.update();
+      controls.enablePan = false;
+      controls.enableDamping = true;
+
       const dracoLoader = new DRACOLoader();
       dracoLoader.setDecoderPath("draco/");
-      gltfLoader.setDRACOLoader(dracoLoader);
 
-      gltfLoader.load(modelUrl.value, gltf => {
-        console.log(gltf, "gltf");
-        scene.add(gltf.scene);
-      });
+      const loader = new GLTFLoader();
+      loader.setDRACOLoader(dracoLoader);
+      loader.load(
+        modelUrl.value,
+        function (gltf) {
+          const model = gltf.scene;
+          model.position.set(1, 1, 0);
+          model.scale.set(0.01, 0.01, 0.01);
+          scene.add(model);
 
-      const sizes = {
-        width: window.innerWidth,
-        height: window.innerHeight
+          mixer = new THREE.AnimationMixer(model);
+          mixer.clipAction(gltf.animations[0]).play();
+
+          animate();
+        },
+        undefined,
+        function (e) {
+          console.error(e);
+        }
+      );
+
+      window.onresize = function () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
       };
 
-      const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500);
-      camera.position.set(0, 0, 100);
-      camera.lookAt(0, 0, 0);
+      function animate() {
+        requestAnimationFrame(animate);
 
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(sizes.width, sizes.height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.shadowMap.enabled = true;
-      renderer.outputEncoding = THREE.sRGBEncoding; //!不加颜色变暗
+        const delta = clock.getDelta();
 
-      renderer.setClearColor("#ffffff");
-      renderer.render(scene, camera);
+        // @ts-ignore
+        mixer.update(delta);
 
-      containerRef.value?.appendChild(renderer.domElement);
+        controls.update();
+
+        stats.update();
+
+        renderer.render(scene, camera);
+      }
     };
 
     onMounted(init);
