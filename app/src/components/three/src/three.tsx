@@ -19,7 +19,6 @@ const Component = defineComponent({
   setup(props, ctx) {
     const store = createProvider(props, ctx);
     const { isLoading, containerRef } = store;
-    const { modelUrl } = useModel("littleBee");
 
     const init = () => {
       // @ts-ignore
@@ -52,29 +51,17 @@ const Component = defineComponent({
       controls.enablePan = false;
       controls.enableDamping = true;
 
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath("draco/");
-
-      const loader = new GLTFLoader();
-      loader.setDRACOLoader(dracoLoader);
-      loader.load(
-        modelUrl.value,
-        function (gltf) {
-          const model = gltf.scene;
-          model.position.set(1, 1, 0);
-          model.scale.set(0.01, 0.01, 0.01);
+      useModel("littleBee", {
+        position: new THREE.Vector3(0, 0, 0),
+        scale: new THREE.Vector3(0.01, 0.01, 0.01),
+        rotation: new THREE.Vector3(0, 65, 0),
+        loadCallback(modelInstance, model) {
           scene.add(model);
-
           mixer = new THREE.AnimationMixer(model);
-          mixer.clipAction(gltf.animations[0]).play();
-
+          mixer.clipAction(modelInstance.animations[0]).play();
           animate();
-        },
-        undefined,
-        function (e) {
-          console.error(e);
         }
-      );
+      });
 
       window.onresize = function () {
         camera.aspect = window.innerWidth / window.innerHeight;
